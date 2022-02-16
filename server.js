@@ -107,8 +107,7 @@ app.get("/joyas/V2/campo/:numero", (req, res) => {
 //Crear una ruta que devuelva como payload un JSON con un mensaje de error cuando
 //el usuario consulte el id de una joya que no exista.
 
-app.get("/joyas/err/:numero", (req, res) => {
-  console.log("estoy aca")
+app.get("/joyas/err/:numero", (req, res) => { 
   const { numero } = req.params;
   const { fields } = req.query;
   if (fields) return res.send({

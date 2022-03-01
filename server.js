@@ -43,17 +43,17 @@ const HATEOASV2 = () =>
 //Permitir hacer ordenamiento de las joyas según su valor de forma ascendente o
 //descendente usando Query Strings.    
 const orderValues = (order) => {
-  return order == "asc"
+  return order === "asc"
     ? (HATEOASV2()).sort((a, b) => (a.valor > b.valor ? 1 : -1))
-    : order == "desc"
+    : order === "desc"
       ? (HATEOASV2()).sort((a, b) => (a.valor < b.valor ? 1 : -1))
       : false;
 };
-
+//Ruta version2.
 app.get("/joyas/V2", (req, res) => {
   const { values } = req.query;
-  if (values == "asc") return res.send(orderValues("asc"));
-  if (values == "desc") return res.send(orderValues("desc"));
+  if (values === "asc") return res.send(orderValues("asc"));
+  if (values === "desc") return res.send(orderValues("desc"));
 
   //Permitir hacer paginación de las joyas usando Query Strings.
   if (req.query.page) {
@@ -114,6 +114,7 @@ app.get("/joyas/err/:numero", (req, res) => {
     joyaNum: fieldsSelect(joyaNum(numero),
       fields.split(","))
   });
+  
   joyaNum(numero)
     ? res.send({
       joyaNum: joyaNum(numero),
